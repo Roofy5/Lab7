@@ -3,7 +3,8 @@
 // Zmiana: 10 - grudzien - 2015 //Dodanie zapisu/odczytu do pliku binarnego
 // Zmiana 15 - grudzien - 2015 //Dodanie do load funkcji close(), w menu atoi(), zwracanie ifstream/ofstream, kontrola wczytywania danych
 //									    //Migracja na MFC >> !!!!! <<
-// Ostatnia zmiana 17 - grudzieñ - 2015 //Destruktor my_coord inline, poprawa strumien cin w my_coord
+// Zmiana 17 - grudzieñ - 2015 //Destruktor my_coord inline, poprawa strumien cin w my_coord
+// Ostatnia zmiana 19 - grudzieñ - 2015 //GitHub
 
 #include "stdafx.h"
 #include <iostream>
