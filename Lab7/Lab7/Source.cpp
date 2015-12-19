@@ -5,6 +5,7 @@
 //									    //Migracja na MFC >> !!!!! <<
 // Zmiana 17 - grudzieñ - 2015 //Destruktor my_coord inline, poprawa strumien cin w my_coord
 // Ostatnia zmiana 19 - grudzieñ - 2015 //GitHub
+//
 
 #include "stdafx.h"
 #include <iostream>
