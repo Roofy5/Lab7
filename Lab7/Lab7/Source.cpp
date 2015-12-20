@@ -4,7 +4,8 @@
 // Zmiana 15 - grudzien - 2015  //Dodanie do load funkcji close(), w menu atoi(), zwracanie ifstream/ofstream, kontrola wczytywania danych
 //							    //Migracja na MFC >> !!!!! <<
 // Zmiana 17 - grudzieñ - 2015  //Destruktor my_coord inline, poprawa strumien cin w my_coord
-// Ostatnia zmiana 19 - grudzieñ - 2015 //GitHub
+// Zmiana 19 - grudzieñ - 2015 //GitHub
+// Ostatnia zmiana 20 - grudzieñ - 2015 //Poprawki przez SF
 //
 
 #include "stdafx.h"

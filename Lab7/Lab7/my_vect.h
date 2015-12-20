@@ -201,7 +201,7 @@ template <class T>
 bool my_vect<T>::save(const char * filename)
 {
 	ofstream plik(filename, ios::out | ios::binary);
-	if (plik.good() == false)
+	if (!plik.is_open())
 	{
 		msg.mess(my_mess::WARN_CREATE_FILE);
 		return false;
@@ -220,24 +220,17 @@ template <class T>
 bool my_vect<T>::load(const char * filename)
 {
 	ifstream plik(filename, ios::in | ios::binary);
-	if (plik.good() == false)
+	if (!plik.is_open())
 	{
 		msg.mess(my_mess::WARN_OPEN_FILE);
 		return false;
 	}
 
-	char * tmp_ndim = new char[sizeof(size_t)];
-	plik.read(tmp_ndim, sizeof(size_t)); // Odczytuje ndim
-	size_t *wsk1 = (size_t*)tmp_ndim; //Odkodowanie z char
-	ndim = *wsk1;
-	
-	char * tmp_last = new char[sizeof(size_t)];
-	plik.read(tmp_last, sizeof(size_t)); // Odczytuje last
-	size_t *wsk2 = (size_t*)tmp_last; //Odkodowanie z char
-	last = *wsk2;
-
 	if (dat)
 		delete[]dat;
+
+	plik.read((char *)&ndim, sizeof(size_t));
+	plik.read((char *)&last, sizeof(size_t));
 
 	//Alokuje nowa tablice o wymiarze ndim
 	//Tablice alokuje tylko raz - nie wykonuje push()
@@ -249,8 +242,6 @@ bool my_vect<T>::load(const char * filename)
 		plik >> dat[i]; //Przeciazony operator >> w klasie ktora przechowujemy w vector
 	}
 
-	delete tmp_ndim;
-	delete tmp_last;
 	plik.close();
 	return true;
 }
