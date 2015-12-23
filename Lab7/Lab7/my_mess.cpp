@@ -14,8 +14,9 @@ char *my_mess::strtab[] =
 	"W  niepoprawny kod operacji",    //WARN_ARR_UNKN
 	"W  array = NULL",				  //WARN_ARR_NULL,
 	"W	nie moge otworzyc pliku do zapisu",  //WARN_CREATE_FILE
-	"W	nie moge otworzyc pliku do odczytu",	 //WARN_OPEN_FILE
-	"E  Blad przy wczytywaniu pliku"		 //ERR_LOAD_FILE
+	"W	nie moge otworzyc pliku do odczytu", //WARN_OPEN_FILE
+	"E  Blad przy wczytywaniu pliku",		 //ERR_LOAD_FILE
+	"E  Za dluga nazwa wierzcholka"			 //ERR_TO_LONG_NAME
 };
 
 void my_mess::mess(enum MY_MESSAGE ms)

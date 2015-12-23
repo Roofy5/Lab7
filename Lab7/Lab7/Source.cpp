@@ -5,8 +5,8 @@
 //							    //Migracja na MFC >> !!!!! <<
 // Zmiana 17 - grudzieñ - 2015  //Destruktor my_coord inline, poprawa strumien cin w my_coord
 // Zmiana 19 - grudzieñ - 2015 //GitHub
-// Ostatnia zmiana 20 - grudzieñ - 2015 //Poprawki przez SF
-//
+// Zmiana 20 - grudzieñ - 2015 //Poprawki przez SF
+// Ostatnia zmiana 22 - grudzieñ - 2015 //Dodanie klasy node
 
 #include "stdafx.h"
 #include <iostream>
@@ -14,6 +14,7 @@
 #include "my_coord.h"
 #include "my_mess.h"
 #include "my_vect.h"
+#include "node.h"
 
 using namespace std;
 
@@ -53,6 +54,15 @@ int main(int argc, char* argv[])
 	int op;  //operacje
 	char komenda[32];
 	my_interf ifc(3);
+
+	node wierz(1, "Hello World and everybody", 1, -3.14);
+	node wierz2;
+	node wierz3(2, "", 1, 2);
+
+	wierz = wierz2;
+
+	cout << (wierz == wierz3);
+	cin >> wierz2;
 
 	while (ifc.run)
 	{

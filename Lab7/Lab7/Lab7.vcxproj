@@ -86,6 +86,7 @@
     <ClInclude Include="my_interf.h" />
     <ClInclude Include="my_mess.h" />
     <ClInclude Include="my_vect.h" />
+    <ClInclude Include="node.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -95,6 +96,7 @@
     <ClCompile Include="my_coord.cpp" />
     <ClCompile Include="my_interf.cpp" />
     <ClCompile Include="my_mess.cpp" />
+    <ClCompile Include="node.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

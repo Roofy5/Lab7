@@ -23,7 +23,7 @@ my_coord::my_coord(double x, double y)
 		pcoord = NULL;
 }*/
 
-/*my_coord::~my_coord()
+/*my_coord::~my_coord() //inline w klasie
 {
 	if (pcoord)
 		delete[] pcoord;
