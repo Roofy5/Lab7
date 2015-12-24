@@ -21,7 +21,7 @@ public:
 	friend ofstream & operator<<(ofstream & plik, const node &ob);
 	friend ifstream & operator>>(ifstream & plik, node &ob);
 
-	void FunExcel(ofstream & plik);
+	friend class CExcel_class;
 private:
 	bool Compare_Text(const char * a, const char * b) const;
 };

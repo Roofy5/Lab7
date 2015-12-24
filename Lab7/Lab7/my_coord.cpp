@@ -127,9 +127,3 @@ ifstream & operator>>(ifstream & plik, my_coord &ob)
 		ob.msg.mess(my_mess::ERR_LOAD_FILE);
 	return plik;
 }
-
-void my_coord::FunExcel(ofstream & plik)
-{
-	if (pcoord)
-		plik << pcoord[0] << ";" << pcoord[1] << endl;
-}

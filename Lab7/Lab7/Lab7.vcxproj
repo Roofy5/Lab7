@@ -81,6 +81,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CExcel_class.h" />
     <ClInclude Include="Lab7.h" />
     <ClInclude Include="my_coord.h" />
     <ClInclude Include="my_interf.h" />
@@ -92,6 +93,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CExcel_class.cpp" />
     <ClCompile Include="Lab7.cpp" />
     <ClCompile Include="my_coord.cpp" />
     <ClCompile Include="my_interf.cpp" />

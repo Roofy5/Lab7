@@ -45,6 +45,7 @@ public:
 	void remove();
 	void save();
 	void load();
+	void saveExcelCSV();
 
 	void finish();
 	void defaul();

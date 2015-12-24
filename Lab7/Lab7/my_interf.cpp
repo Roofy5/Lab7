@@ -207,6 +207,12 @@ void my_interf::load()
 }
 #endif
 
+void my_interf::saveExcelCSV()
+{
+	int i = 0;
+
+}
+
 
 #ifdef FIND_ALGORITHM
 #undef FIND_ALGORITHM

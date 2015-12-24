@@ -111,12 +111,6 @@ ifstream & operator>>(ifstream & plik, node &ob)
 	return plik;
 }
 
-void node::FunExcel(ofstream & plik)
-{
-	// TODO
-	//plik << numb << ";" << str << ";" << (my_coord &)(*this).FunExcel(plik);
-}
-
 bool node::Compare_Text(const char * a, const char * b) const
 {
 	int dl1 = strlen(a) + 1;

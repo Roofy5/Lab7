@@ -8,7 +8,7 @@
 // Zmiana 20 - grudzieñ - 2015 //Poprawki przez SF
 // Zmiana 22 - grudzieñ - 2015 //Dodanie klasy node
 // Ostatnia zmiana 24 - grudzieñ - 2015 //My_coord zmiana wyswietlania <<, obsluga >> << w node (TODO: obsluga spacji)
-										// Rozpozcecie prac nad Excel
+										// Rozpozcecie prac nad Excel, Dodanie klasy CExcel_class
 
 #include "stdafx.h"
 #include <iostream>
@@ -17,6 +17,7 @@
 #include "my_mess.h"
 #include "my_vect.h"
 #include "node.h"
+#include "CExcel_class.h"
 
 using namespace std;
 
@@ -56,6 +57,11 @@ int main(int argc, char* argv[])
 	int op;  //operacje
 	char komenda[32];
 	my_interf ifc(3);
+
+	/*CExcel_class ExcelObject;
+
+	my_coord ob(-12.233456789, 0);
+	ExcelObject.CreateCSVFile(ob);*/
 
 	while (ifc.run)
 	{

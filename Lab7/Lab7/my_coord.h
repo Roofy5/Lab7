@@ -24,7 +24,7 @@ public:
 	friend ofstream & operator<<(ofstream & plik, const my_coord &ob);
 	friend ifstream & operator>>(ifstream & plik, my_coord &ob);
 
-	void FunExcel(ofstream & plik);
+	friend class CExcel_class;
 private:
 	void alloc();
 };
