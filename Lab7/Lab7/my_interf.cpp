@@ -40,14 +40,16 @@ void my_interf::menu()
 
 void my_interf::push()
 {
-	my_coord ob(0, 0);
+	//my_coord ob(0, 0);
+	node ob(0, "NoName", 0, 0);
 	cin >> ob;
 	vect.push(ob);
 }
 
 void my_interf::pop()
 {
-	my_coord *ptr = NULL;
+	//my_coord *ptr = NULL;
+	node *ptr = NULL;
 	ptr = vect.pop();
 	if (ptr)
 	{
@@ -68,10 +70,18 @@ void my_interf::disp()
 #ifdef FIND_ALGORITHM
 void my_interf::find()
 {
-	my_coord ob(0, 0);
-	my_coord *ptr = NULL;
-	cout << "input x, y - object for search\n";
-	cin >> ob;
+	//my_coord ob(0, 0);
+	//my_coord *ptr = NULL;
+	node ob(0, "NoName", 0, 0);
+	node *ptr = NULL;
+	cout << "Wprowadz dane do poszukiwania: \n";
+	//cin >> ob; // Wyszukiwanie identycznego obiektu
+
+	cout << "Podaj numer wierzcholka: ";
+	int nr;
+	cin >> nr;
+	node ob(nr, "NoName", 0, 0);
+
 	ptr = vect.get_begin();
 	size_t dist;
 	while (ptr != vect.get_end())
@@ -108,10 +118,18 @@ T * Find(T* ptr, T* lastPtr, const T &ob)
 
 void my_interf::find()
 {
-	my_coord ob(0, 0);
-	my_coord *ptr = NULL;
-	cout << "input x, y - object for search\n";
-	cin >> ob;
+	//my_coord ob(0, 0);
+	//my_coord *ptr = NULL;
+	//node ob(0, "NoName", 0, 0);
+	node *ptr = NULL;
+	cout << "Wprowadz dane do poszukiwania: \n";
+	//cin >> ob; // Wyszukiwanie identycznego obiektu
+
+	cout << "Podaj numer wierzcholka: ";
+	int nr;
+	cin >> nr;
+	node ob(nr, "NoName", 0, 0);
+
 	ptr = vect.get_begin();
 	size_t dist;
 	while (ptr)

@@ -14,7 +14,7 @@ public:
 		WARN_CREATE_FILE,  //blad przy otworzeniu pliku do zapisu
 		WARN_OPEN_FILE,	   //blad przy twoarciu pliku do odczytu
 		ERR_LOAD_FILE,	   //blad przy odczycie
-		ERR_TO_LONG_NAME,  //za dluga nazwa wierzcholka  >512
+		ERR_TO_LONG_NAME,  //za dluga nazwa wierzcholka  >dl_nazwa
 		TOT_NUMB                 //ogólna iloœæ komunikatów
 	};
 

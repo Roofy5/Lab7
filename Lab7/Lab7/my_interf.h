@@ -2,6 +2,7 @@
 
 #include "my_vect.h"
 #include "my_coord.h"
+#include "node.h"
 
 class my_interf
 {
@@ -24,7 +25,8 @@ public:
 	};
 
 private:
-	my_vect<my_coord> vect;
+	//my_vect<my_coord> vect;
+	my_vect<node> vect;
 	int MAX_INTERF_CHAR;
 	char str_interf[MY_INTERF_TOT][512];  //komunikaty, wyœwietlane na monitorze
 	my_mess msg;

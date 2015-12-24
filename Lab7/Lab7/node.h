@@ -1,10 +1,12 @@
 #pragma once
 #include "my_coord.h"
 
+#define dl_nazwa 32
+
 class node : public my_coord
 {
 	int numb;	//numer wierzcholka
-	char str[512]; //nazwa wierzcholka
+	char str[dl_nazwa]; //nazwa wierzcholka
 	my_mess msg;
 public:
 	node();
@@ -19,6 +21,7 @@ public:
 	friend ofstream & operator<<(ofstream & plik, const node &ob);
 	friend ifstream & operator>>(ifstream & plik, node &ob);
 
+	void FunExcel(ofstream & plik);
 private:
 	bool Compare_Text(const char * a, const char * b) const;
 };

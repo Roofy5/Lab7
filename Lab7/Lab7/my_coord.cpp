@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "my_coord.h"
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -94,7 +95,8 @@ ostream & operator<<(ostream & strumien, const my_coord & ob)
 {
 	if (ob.pcoord)
 	{
-		strumien << "x: " << ob.pcoord[0] << "\ty: " << ob.pcoord[1];
+		//strumien << "x: " << ob.pcoord[0] << "\ty: " << ob.pcoord[1];
+		strumien << "x: " << setw(10) << ob.pcoord[0] << " y: " << setw(10) << ob.pcoord[1];
 	}
 	return strumien;
 }
@@ -124,4 +126,10 @@ ifstream & operator>>(ifstream & plik, my_coord &ob)
 	if (!plik.good())
 		ob.msg.mess(my_mess::ERR_LOAD_FILE);
 	return plik;
+}
+
+void my_coord::FunExcel(ofstream & plik)
+{
+	if (pcoord)
+		plik << pcoord[0] << ";" << pcoord[1] << endl;
 }

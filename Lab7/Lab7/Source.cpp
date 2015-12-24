@@ -6,7 +6,9 @@
 // Zmiana 17 - grudzieñ - 2015  //Destruktor my_coord inline, poprawa strumien cin w my_coord
 // Zmiana 19 - grudzieñ - 2015 //GitHub
 // Zmiana 20 - grudzieñ - 2015 //Poprawki przez SF
-// Ostatnia zmiana 22 - grudzieñ - 2015 //Dodanie klasy node
+// Zmiana 22 - grudzieñ - 2015 //Dodanie klasy node
+// Ostatnia zmiana 24 - grudzieñ - 2015 //My_coord zmiana wyswietlania <<, obsluga >> << w node (TODO: obsluga spacji)
+										// Rozpozcecie prac nad Excel
 
 #include "stdafx.h"
 #include <iostream>
@@ -54,15 +56,6 @@ int main(int argc, char* argv[])
 	int op;  //operacje
 	char komenda[32];
 	my_interf ifc(3);
-
-	node wierz(1, "Hello World and everybody", 1, -3.14);
-	node wierz2;
-	node wierz3(2, "", 1, 2);
-
-	wierz = wierz2;
-
-	cout << (wierz == wierz3);
-	cin >> wierz2;
 
 	while (ifc.run)
 	{
