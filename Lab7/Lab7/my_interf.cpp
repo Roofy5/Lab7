@@ -23,6 +23,7 @@ my_interf::my_interf(size_t dim)
 	sprintf_s(str_interf[MY_INTERF_REMOVE], MAX_INTERF_CHAR*sizeof(char), "%d - remove", MY_INTERF_REMOVE); //Dodane - usuniecie z tablicy
 	sprintf_s(str_interf[MY_INTERF_SAVE], MAX_INTERF_CHAR*sizeof(char), "%d - zapisz do pliku", MY_INTERF_SAVE);		//Dodane - zapis do pliku
 	sprintf_s(str_interf[MY_INTERF_LOAD], MAX_INTERF_CHAR*sizeof(char), "%d - wczytaj z pliku", MY_INTERF_LOAD);		//Dodane - odczyt z pliku
+	sprintf_s(str_interf[MY_INTERF_EXCEL], MAX_INTERF_CHAR*sizeof(char), "%d - zapisz w foramcie CSV + Excel", MY_INTERF_EXCEL); //Dodane - zapis do pliku CSV i uruchomienie Excela
 
 	sprintf_s(str_interf[MY_INTERF_FINISH], MAX_INTERF_CHAR*sizeof(char), "%d - finish", MY_INTERF_FINISH);
 	vect.init(dim);
@@ -207,10 +208,36 @@ void my_interf::load()
 }
 #endif
 
-void my_interf::saveExcelCSV()
+void my_interf::excel()
 {
-	int i = 0;
+	CFileDialog dialog(false, _T("csv"));
+	dialog.DoModal();
+	char filePath[1024];
+	sprintf_s(filePath, 1024 * sizeof(char), "%s", (CW2A)dialog.GetPathName().GetString()); //Konwersja do char*
 
+	ofstream plik(filePath, ios::out);
+	if (!plik.is_open())
+	{
+		msg.mess(my_mess::WARN_CREATE_FILE);
+		return;
+	}
+
+	CExcel_class ExcelObject;
+	node * ptr = vect.get_begin();
+	node * end = vect.get_end();
+	while (ptr != end)
+	{
+		ExcelObject.CreateOfstream(plik, *ptr);
+		ptr++;
+		if (!plik.good())
+		{
+			msg.mess(my_mess::ERR_SAVE_FILE);
+		}
+	}
+	plik.close();
+
+	cout << "Zapisano\n";
+	ExcelObject.SpawnExcel(filePath);
 }
 
 

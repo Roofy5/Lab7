@@ -235,6 +235,7 @@ bool my_vect<T>::load(const char * filename)
 	//Alokuje nowa tablice o wymiarze ndim
 	//Tablice alokuje tylko raz - nie wykonuje push()
 	//Dzieki temu wzrasta wydajnosc
+	
 	dat = alloc(ndim); 
 
 	for (size_t i = 0; i < ndim; i++) //Odczytuje dopoki i<last - last jest zapisywany i odczytywany z pliku - dzieki temu mam dokladna kontrole ile wczytac danych - nie musze uzywac End Of File

@@ -3,6 +3,7 @@
 #include "my_vect.h"
 #include "my_coord.h"
 #include "node.h"
+#include "CExcel_class.h"
 
 class my_interf
 {
@@ -19,6 +20,7 @@ public:
 		MY_INTERF_REMOVE, //Dodane - usuniecie z tablicy
 		MY_INTERF_SAVE,	  //Dodane - zapis do pliku
 		MY_INTERF_LOAD,		//Dodane - odczyt z pliku
+		MY_INTERF_EXCEL,  //Dodane - zapis do pliku CSV i uruchomienie Excela
 
 		MY_INTERF_FINISH,
 		MY_INTERF_TOT
@@ -45,7 +47,7 @@ public:
 	void remove();
 	void save();
 	void load();
-	void saveExcelCSV();
+	void excel();
 
 	void finish();
 	void defaul();

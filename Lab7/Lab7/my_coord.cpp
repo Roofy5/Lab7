@@ -109,7 +109,7 @@ ofstream & operator<<(ofstream & plik, const my_coord &ob)
 		if (!plik.good())
 		{
 			my_mess msg;
-			msg.mess(my_mess::ERR_LOAD_FILE);
+			msg.mess(my_mess::ERR_SAVE_FILE);
 		}
 	}
 	return plik;

@@ -16,6 +16,7 @@ char *my_mess::strtab[] =
 	"W	nie moge otworzyc pliku do zapisu",  //WARN_CREATE_FILE
 	"W	nie moge otworzyc pliku do odczytu", //WARN_OPEN_FILE
 	"E  Blad przy wczytywaniu pliku",		 //ERR_LOAD_FILE
+	"E  Blad przy zapisie do pliku",		 //ERR_SAVE_FILE
 	"E  Za dluga nazwa wierzcholka"			 //ERR_TO_LONG_NAME
 };
 

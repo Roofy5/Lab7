@@ -62,8 +62,10 @@ bool node::operator == (const node &ob) const
 
 istream & operator>>(istream & strumien, node & ob)
 {
+	char liczba[32];
 	cout << "Podaj numer wierzcholka: ";
-	strumien >> ob.numb;
+	strumien >> liczba;
+	ob.numb = atoi(liczba);
 	cout << "Podaj nazwe wierzcholka (max " << dl_nazwa << "): ";
 
 	strumien >> ws >> setw(dl_nazwa) >> ob.str;

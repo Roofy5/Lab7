@@ -1,14 +1,15 @@
 // Michal Gucwa
-// Zmiana: 08 - grudzien - 2015
-// Zmiana: 10 - grudzien - 2015 //Dodanie zapisu/odczytu do pliku binarnego
-// Zmiana 15 - grudzien - 2015  //Dodanie do load funkcji close(), w menu atoi(), zwracanie ifstream/ofstream, kontrola wczytywania danych
-//							    //Migracja na MFC >> !!!!! <<
-// Zmiana 17 - grudzieñ - 2015  //Destruktor my_coord inline, poprawa strumien cin w my_coord
+// Zmiana 08 - grudzien - 2015
+// Zmiana 10 - grudzien - 2015 //Dodanie zapisu/odczytu do pliku binarnego
+// Zmiana 15 - grudzien - 2015 //Dodanie do load funkcji close(), w menu atoi(), zwracanie ifstream/ofstream, kontrola wczytywania danych
+//							   //Migracja na MFC >> !!!!! <<
+// Zmiana 17 - grudzieñ - 2015 //Destruktor my_coord inline, poprawa strumien cin w my_coord
 // Zmiana 19 - grudzieñ - 2015 //GitHub
 // Zmiana 20 - grudzieñ - 2015 //Poprawki przez SF
 // Zmiana 22 - grudzieñ - 2015 //Dodanie klasy node
-// Ostatnia zmiana 24 - grudzieñ - 2015 //My_coord zmiana wyswietlania <<, obsluga >> << w node (TODO: obsluga spacji)
-										// Rozpozcecie prac nad Excel, Dodanie klasy CExcel_class
+// Zmiana 24 - grudzieñ - 2015 //My_coord zmiana wyswietlania <<, obsluga >> << w node (TODO: obsluga spacji)
+//							   //Rozpoczecie prac nad Excel, Dodanie klasy CExcel_class
+// Zmiana 25 - grudzieñ - 2015 //Gotowa obsluga Excel - pliki CSV
 
 #include "stdafx.h"
 #include <iostream>
@@ -58,11 +59,6 @@ int main(int argc, char* argv[])
 	char komenda[32];
 	my_interf ifc(3);
 
-	/*CExcel_class ExcelObject;
-
-	my_coord ob(-12.233456789, 0);
-	ExcelObject.CreateCSVFile(ob);*/
-
 	while (ifc.run)
 	{
 		ifc.menu();
@@ -93,6 +89,9 @@ int main(int argc, char* argv[])
 			break;
 		case ifc.MY_INTERF_LOAD:
 			ifc.load();
+			break;
+		case ifc.MY_INTERF_EXCEL:
+			ifc.excel();
 			break;
 		case ifc.MY_INTERF_FINISH:
 			ifc.finish();
