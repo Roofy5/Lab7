@@ -10,6 +10,7 @@
 // Zmiana 24 - grudzieñ - 2015 //My_coord zmiana wyswietlania <<, obsluga >> << w node (TODO: obsluga spacji)
 //							   //Rozpoczecie prac nad Excel, Dodanie klasy CExcel_class
 // Zmiana 25 - grudzieñ - 2015 //Gotowa obsluga Excel - pliki CSV
+// Zmiana 26 - grudzieñ - 2015 //MessageBoxA w CExcel_class::SpawnExcel()
 
 #include "stdafx.h"
 #include <iostream>
@@ -102,5 +103,6 @@ int main(int argc, char* argv[])
 	}
 
 	system("pause");
+	cout << "Zwalnianie zasobow. Prosze czekac\n";
 	return 0;
 }
