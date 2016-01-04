@@ -11,6 +11,7 @@
 //							   //Rozpoczecie prac nad Excel, Dodanie klasy CExcel_class
 // Zmiana 25 - grudzieñ - 2015 //Gotowa obsluga Excel - pliki CSV
 // Zmiana 26 - grudzieñ - 2015 //MessageBoxA w CExcel_class::SpawnExcel()
+// Zmiana 04 - styczeñ  - 2016 //Poprawki. Przeniesienie Excel() z my_interf do my_vect
 
 #include "stdafx.h"
 #include <iostream>

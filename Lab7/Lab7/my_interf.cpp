@@ -215,29 +215,10 @@ void my_interf::excel()
 	char filePath[1024];
 	sprintf_s(filePath, 1024 * sizeof(char), "%s", (CW2A)dialog.GetPathName().GetString()); //Konwersja do char*
 
-	ofstream plik(filePath, ios::out);
-	if (!plik.is_open())
-	{
-		msg.mess(my_mess::WARN_CREATE_FILE);
-		return;
-	}
+	//Przenioslem funkcje do klasy my_vect - doda³em do niej obiekt CExcel_class
 
-	CExcel_class ExcelObject;
-	node * ptr = vect.get_begin();
-	node * end = vect.get_end();
-	while (ptr != end)
-	{
-		ExcelObject.CreateOfstream(plik, *ptr);
-		ptr++;
-		if (!plik.good())
-		{
-			msg.mess(my_mess::ERR_SAVE_FILE);
-		}
-	}
-	plik.close();
-
-	cout << "Zapisano\n";
-	ExcelObject.SpawnExcel(filePath);
+	if(vect.excel(filePath))
+		cout << "Zapisano. Uruchamiam Excel\n";
 }
 
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "my_mess.h"
+#include "CExcel_class.h"
 #include <iostream>
 #include <fstream>
 
@@ -13,6 +14,7 @@ class my_vect
 	size_t ndim;   //rozmiar tablicy, na ktory pozostala zaalokowana
 	size_t last;   //wskazuje na pierwsza pusta pozycje w tablice
 	my_mess msg;
+	CExcel_class ExcelObject;
 
 public:
 	my_vect(size_t dm); //konstruktor - alokuje pamiec dla tablicy typu T na dm elementow
@@ -29,6 +31,7 @@ public:
 	void remove(size_t ind); //usuwa element tablicy o indeksie ind, kompresuje tablicu
 	bool save(const char * filename);
 	bool load(const char * filename);
+	bool excel(char * filePath);
 
 private:
 	int liczba_alokacji;
@@ -244,6 +247,33 @@ bool my_vect<T>::load(const char * filename)
 	}
 
 	plik.close();
+	return true;
+}
+
+template <class T>
+bool my_vect<T>::excel(char * filePath)
+{
+	ofstream plik(filePath, ios::out);
+	if (!plik.is_open())
+	{
+		msg.mess(my_mess::WARN_CREATE_FILE);
+		return false;
+	}
+
+	T * ptr = get_begin();
+	T * end = get_end();
+	while (ptr != end)
+	{
+		ExcelObject.CreateOfstream(plik, *ptr);
+		ptr++;
+		if (!plik.good())
+		{
+			msg.mess(my_mess::ERR_SAVE_FILE);
+		}
+	}
+	plik.close();
+
+	ExcelObject.SpawnExcel(filePath);
 	return true;
 }
 
