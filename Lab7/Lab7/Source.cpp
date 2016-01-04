@@ -12,6 +12,7 @@
 // Zmiana 25 - grudzieñ - 2015 //Gotowa obsluga Excel - pliki CSV
 // Zmiana 26 - grudzieñ - 2015 //MessageBoxA w CExcel_class::SpawnExcel()
 // Zmiana 04 - styczeñ  - 2016 //Poprawki. Przeniesienie Excel() z my_interf do my_vect
+//							   //Poprawka T& my_vect<T>::operator[], doadnie funkcji modify, insert, insertTable, removeAll
 
 #include "stdafx.h"
 #include <iostream>
@@ -83,8 +84,20 @@ int main(int argc, char* argv[])
 		case ifc.MY_INTERF_FIND:
 			ifc.find();
 			break;
+		case ifc.MY_INTERF_INSERT:
+			ifc.insert();
+			break;
+		case ifc.MY_INTERF_INSERTTABLE:
+			ifc.insertTable();
+			break;
 		case ifc.MY_INTERF_REMOVE:
 			ifc.remove();
+			break;
+		case ifc.MY_INTERF_REMOVEALL:
+			ifc.removeAll();
+			break;
+		case ifc.MY_INTERF_MODIFY:
+			ifc.modify();
 			break;
 		case ifc.MY_INTERF_SAVE:
 			ifc.save();

@@ -20,7 +20,11 @@ my_interf::my_interf(size_t dim)
 	sprintf_s(str_interf[MY_INTERF_DISP], MAX_INTERF_CHAR*sizeof(char), "%d - disp", MY_INTERF_DISP);
 	sprintf_s(str_interf[MY_INTERF_FIND], MAX_INTERF_CHAR*sizeof(char), "%d - find", MY_INTERF_FIND);
 
+	sprintf_s(str_interf[MY_INTERF_INSERT], MAX_INTERF_CHAR*sizeof(char), "%d - insert", MY_INTERF_INSERT); //Dodane - dodanie za index
+	sprintf_s(str_interf[MY_INTERF_INSERTTABLE], MAX_INTERF_CHAR*sizeof(char), "%d - insert array", MY_INTERF_INSERTTABLE); //Dodane - dodanie tablicy za index
 	sprintf_s(str_interf[MY_INTERF_REMOVE], MAX_INTERF_CHAR*sizeof(char), "%d - remove", MY_INTERF_REMOVE); //Dodane - usuniecie z tablicy
+	sprintf_s(str_interf[MY_INTERF_REMOVEALL], MAX_INTERF_CHAR*sizeof(char), "%d - remove ALL", MY_INTERF_REMOVEALL); //Dodane - usuniecie all z tablicy
+	sprintf_s(str_interf[MY_INTERF_MODIFY], MAX_INTERF_CHAR*sizeof(char), "%d - modyfikuj obiekt", MY_INTERF_MODIFY); //Dodane - modyfikacja indexu
 	sprintf_s(str_interf[MY_INTERF_SAVE], MAX_INTERF_CHAR*sizeof(char), "%d - zapisz do pliku", MY_INTERF_SAVE);		//Dodane - zapis do pliku
 	sprintf_s(str_interf[MY_INTERF_LOAD], MAX_INTERF_CHAR*sizeof(char), "%d - wczytaj z pliku", MY_INTERF_LOAD);		//Dodane - odczyt z pliku
 	sprintf_s(str_interf[MY_INTERF_EXCEL], MAX_INTERF_CHAR*sizeof(char), "%d - zapisz w foramcie CSV + Excel", MY_INTERF_EXCEL); //Dodane - zapis do pliku CSV i uruchomienie Excela
@@ -158,12 +162,106 @@ void my_interf::defaul()
 	cout << "Nieznany kod operacji.\nWybierz ponownie.\n";
 }
 
+void my_interf::insert()
+{
+	node ob(0, "NoName", 0, 0);
+
+	size_t index;
+	cout << "Podaj index ZA ktorym chcesz wstawic obiekt. \nIndex=-1 <=> wstawienie elementu na poczatek wektora\n";
+	cout << "Index: ";
+	cin >> index;
+	cout << "Dane obiektu ktory chcesz: " << endl;
+	cin >> ob;
+
+	if (vect.insert(ob, index))
+		cout << "Dodano obiekt na pozycje " << index + 1 << endl;
+	else
+		cout << "Nie dodano obiektu!" << endl;
+}
+
+void my_interf::insertTable()
+{
+	node * tab = NULL;
+
+	size_t dim;
+	cout << "Podaj wielkosc tablicy: ";
+	cin >> dim;
+	if (dim <= 0)
+	{
+		cout << "Niewlasciwy rozmiar!\n";
+		return;
+	}
+
+	size_t index;
+	cout << "Podaj index ZA ktorym chcesz wstawic tablice obiektow. \nIndex=-1 <=> wstawienie tablicy na poczatek wektora\n";
+	cout << "Index: ";
+	cin >> index;
+
+	try
+	{
+		tab = new node[dim];
+	}
+	catch (bad_alloc)
+	{
+		msg.mess(my_mess::ERR_ALLOC_MEM);
+	}
+
+	for (size_t i = 0; i < dim; i++)
+	{
+		cout << "Podaj element " << i << "/" << dim - 1 << ":\n";
+		cin >> tab[i];
+	}
+
+	if(vect.insertTable(tab, index, dim))
+		cout << "Dodano tablice na pozycje " << index + 1 << endl;
+	else
+		cout << "Nie dodano tablicy!" << endl;
+
+	if (tab)
+		delete[] tab;
+	tab = NULL;
+}
+
 void my_interf::remove()
 {
 	cout << "Podaj index: ";
 	size_t i;
 	cin >> i;
 	vect.remove(i);
+}
+
+void my_interf::removeAll()
+{
+	cout << "Czy jestes pewien usunac wszystko? (T/N): ";
+	char odp;
+	cin >> odp;
+	if (odp == 'T')
+	{
+		if (vect.removeAll())
+			cout << "Usunieto elementy\n";
+		else
+			cout << "Nie usunieto elementow\n";
+	}
+	else
+		return;
+}
+
+void my_interf::modify()
+{
+	//Dzieki try/catch i throw w T& my_vect<T>::operator[] unikam page fault
+	size_t nr;
+	cout << "Podaj index obiektu ktory chcesz modyfikowac: ";
+	cin >> nr;
+	try
+	{
+		cout << "Modyfikujesz obiekt: " << vect[nr] << endl;
+		cin >> vect[nr];
+	}
+	catch (const char * exc)
+	{
+		cout << exc;
+		return;
+	}
 }
 
 #ifdef MFC_Dialogs

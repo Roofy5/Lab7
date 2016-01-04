@@ -11,6 +11,7 @@ class node : public my_coord
 public:
 	node();
 	node(int nb, char *st, double xx, double yy);
+	//node(const node &ob); //Niepotrzebny
 
 	node & operator=(const node & ob);
 	bool operator==(const node &ob) const;

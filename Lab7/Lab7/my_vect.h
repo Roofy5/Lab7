@@ -28,7 +28,10 @@ public:
 	void push(const T &ob); //dodaje element typu T do pierwszej wolnej pozycji w tablice
 	T *pop();               //zwraca wskaznik do ostatniego elementu tablicy i usuwa jego, lub NULL (tablica pusta)
 	T & operator [] (const size_t ind); //0 <= ind < last
+	bool insert(const T &ob, size_t ind);
+	bool insertTable(const T * tab, size_t ind, size_t numb);
 	void remove(size_t ind); //usuwa element tablicy o indeksie ind, kompresuje tablicu
+	bool removeAll(); //przestawia last na 0
 	bool save(const char * filename);
 	bool load(const char * filename);
 	bool excel(char * filePath);
@@ -153,18 +156,66 @@ T & my_vect<T>::operator [] (const size_t ind) //0 <= ind < last
 {
 	if (dat)
 	{
-		if (ind >= 0 && ind < last)
+		if (ind >= 0 && ind < last) //Sprawdzam index - dzieki temu unikam Page Fault
 		{
-			return &dat[ind];
+			return dat[ind]; //return &dat[ind]; 
 		}
 		else
-			return NULL;
+		{
+			//return dat[last]; //return NULL
+			throw "Nieprawidlowy index!\n";
+		}
 	}
 	else
 	{
 		msg.mess(my_mess::WARN_ARR_NULL);
-		return NULL;
+		//return NULL; //return NULL
+		throw "Tablica pusta!\n";
 	}
+}
+
+template <class T>
+bool my_vect<T>::insert(const T &ob, size_t ind)
+{
+	if (dat)
+	{
+		if (ind+1 >= 0 && ind+1 <= last) // ind=-1 - Dzieki temu mozna wstawic przed pierwszy element
+		{
+			size_t i;
+			last++;
+			checkLast();
+			for (i = last; i > ind+1; i--)
+			{
+				dat[i] = dat[i-1];
+			}
+			dat[ind + 1] = ob;
+			return true;
+		}
+		else
+			return false;
+	}
+	else
+	{
+		msg.mess(my_mess::WARN_ARR_NULL);
+		return false;
+	}
+}
+
+template <class T>
+bool my_vect<T>::insertTable(const T * tab, size_t ind, size_t numb)
+{
+	if (dat)
+	{
+		for (size_t i = 0; i < numb; i++)
+			if (!insert(tab[i], ind++))
+				return false;
+	}
+	else
+	{
+		msg.mess(my_mess::WARN_ARR_NULL);
+		return false;
+	}
+	return true;
 }
 
 template <class T>
@@ -198,6 +249,22 @@ void my_vect<T>::remove(size_t ind) //usuwa element tablicy o indeksie ind, komp
 	{
 		msg.mess(my_mess::WARN_ARR_NULL);
 	}
+}
+
+template <class T>
+bool my_vect<T>::removeAll()
+{
+	//Funkcja ustawia tylko last na pozycje 0 - nie usuwa elementow
+	//Na zajeciach mowil Pan zeby elementy tylko "przestawiac" jezeli usuwamy
+	//W podobny sposob dziala remove
+	//Mozna takze zrobic delete []dat ale w projekcie nie jest to sprecyzowane
+	if (dat && last!=0)
+	{
+		last = 0;
+		return true;
+	}
+	else
+		return false;
 }
 
 template <class T>

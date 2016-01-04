@@ -23,6 +23,10 @@ node::node(int nb, char *st, double xx, double yy) : my_coord(xx, yy)
 	}
 }
 
+/*node::node(const node &ob)
+{
+}*/
+
 node & node::operator=(const node & ob)
 {
 	if (this == &ob)

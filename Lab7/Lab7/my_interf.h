@@ -17,7 +17,11 @@ public:
 		MY_INTERF_DISP,
 		MY_INTERF_FIND,
 
+		MY_INTERF_INSERT, //Dodane - dodanie na pozycje
+		MY_INTERF_INSERTTABLE, //Dodane - dodanie tablicy obiektow
 		MY_INTERF_REMOVE, //Dodane - usuniecie z tablicy
+		MY_INTERF_REMOVEALL, //Dodane - usuniecie wszystkiego
+		MY_INTERF_MODIFY, //Dodane - modyfikowanie obiektu
 		MY_INTERF_SAVE,	  //Dodane - zapis do pliku
 		MY_INTERF_LOAD,		//Dodane - odczyt z pliku
 		MY_INTERF_EXCEL,  //Dodane - zapis do pliku CSV i uruchomienie Excela
@@ -44,7 +48,11 @@ public:
 	void disp();
 	void find();
 
+	void insert();
+	void insertTable();
 	void remove();
+	void removeAll();
+	void modify();
 	void save();
 	void load();
 	void excel();
